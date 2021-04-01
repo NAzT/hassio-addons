@@ -19,6 +19,13 @@ pc.ontrack = function(event) {
   stream.addTrack(event.track);
   videoElem.srcObject = stream;
   log(event.streams.length + ' track is delivered')
+  var el = document.createElement(event.track.kind)
+   el.srcObject = event.streams[0]
+   el.muted = true
+   el.autoplay = true
+   el.controls = true
+   el.width = 600
+   document.getElementById('remoteVideos').appendChild(el)  
 }
 
 pc.oniceconnectionstatechange = e => log(pc.iceConnectionState)
@@ -36,7 +43,7 @@ $(document).ready(function() {
 
 
 function getCodecInfo() {
-  $.get("../codec/" + suuid, function(data) {
+  $.get("codec/" + suuid, function(data) {
     try {
       data = JSON.parse(data);
     } catch (e) {
@@ -60,12 +67,13 @@ function getCodecInfo() {
       sendChannel.onmessage = e => log(`Message from DataChannel '${sendChannel.label}' payload '${e.data}'`);
     }
   });
+  
 }
 
 let sendChannel = null;
 
 function getRemoteSdp() {
-  $.post("../receiver/"+ suuid, {
+  $.post("receiver/"+ suuid, {
     suuid: suuid,
     data: btoa(pc.localDescription.sdp)
   }, function(data) {
