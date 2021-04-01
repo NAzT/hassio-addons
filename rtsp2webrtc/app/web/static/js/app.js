@@ -1,4 +1,4 @@
-let suuid = $('#suuid').val();
+let suuid;
 
 let config = {
   iceServers: [{
@@ -36,6 +36,7 @@ async function handleNegotiationNeededEvent() {
 
 $(document).ready(function() {
   $('#' + suuid).addClass('active');
+  suuid = $('#suuid').val();
   getCodecInfo();
 });
 
