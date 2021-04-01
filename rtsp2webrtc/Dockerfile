@@ -1,7 +1,8 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-RUN apk add --no-cache unzip go jq
+RUN apk add --no-cache unzip
+RUN apk add --no-cache go jq
 
 WORKDIR /app
 
