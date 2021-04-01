@@ -56,7 +56,7 @@ func NewPeerConnection(configuration webrtc.Configuration) (*webrtc.PeerConnecti
 
 	s := webrtc.SettingEngine{}
 	s.SetEphemeralUDPPortRange(10550, 50009)
-	log.Println("Set UDP ports to 50000..50009")
+	log.Println("Set UDP ports to 10550..50009")
 	api := webrtc.NewAPI(webrtc.WithMediaEngine(m), webrtc.WithInterceptorRegistry(i), webrtc.WithSettingEngine(s))
 	return api.NewPeerConnection(configuration)
 }
