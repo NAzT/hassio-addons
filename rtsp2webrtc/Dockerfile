@@ -1,5 +1,6 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM
+# FROM $BUILD_FROM
+FROM homeassistant/armv7-homeassistant
 
 RUN apk update
 RUN apk add --no-cache unzip
