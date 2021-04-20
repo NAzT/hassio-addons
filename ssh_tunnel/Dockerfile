@@ -1,5 +1,6 @@
 ARG BUILD_FROM
-FROM $BUILD_FROM
+# FROM $BUILD_FROM
+FROM homeassistant/armv7-homeassistant
 
 RUN apk add --no-cache openssh
 
